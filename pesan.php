@@ -1,0 +1,9 @@
+<?php require 'partials.php'; site_header('Pesan Layanan'); $selected = $_GET['layanan'] ?? ''; $allowed=['Kost Cleaning','Kost Laundry','Kost Delivery','Kost Repair','Kost Care']; if(!in_array($selected,$allowed,true)) $selected=''; ?>
+<section class="page-hero"><div class="container"><h1>Formulir Pemesanan</h1><p>Isi data dengan benar. Pesanan akan tersimpan dan mendapatkan kode pesanan.</p></div></section><section class="content container"><div class="panel" style="max-width:760px;margin:auto"><form action="simpan-pesanan.php" method="post"><input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>"><div class="form-grid">
+<div class="field"><label>Nama lengkap *</label><input name="nama" required maxlength="100" placeholder="Nama Anda"></div>
+<div class="field"><label>Nomor WhatsApp *</label><input name="telepon" required maxlength="20" placeholder="08xxxxxxxxxx"></div>
+<div class="field full"><label>Alamat kos / nomor kamar *</label><input name="alamat" required maxlength="255" placeholder="Nama kos, alamat, nomor kamar"></div>
+<div class="field"><label>Pilih layanan *</label><select name="layanan" required><option value="">Pilih layanan</option><?php foreach($allowed as $a): ?><option <?= $selected===$a?'selected':'' ?>><?= e($a) ?></option><?php endforeach; ?></select></div>
+<div class="field"><label>Tanggal yang diinginkan *</label><input type="date" name="tanggal" min="today" required></div>
+<div class="field full"><label>Detail kebutuhan</label><textarea name="detail" maxlength="1000" placeholder="Jelaskan kebutuhan atau catatan tambahan..."></textarea></div>
+</div><button class="btn" type="submit">Kirim Pesanan</button></form><p class="notice">Pesanan tersimpan di sistem. Admin akan menghubungi Anda untuk mengonfirmasi jadwal dan harga.</p></div></section><?php site_footer(); ?>

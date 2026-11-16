@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const today=new Date().toISOString().slice(0,10);document.querySelectorAll('input[type=date][min="today"]').forEach(el=>el.min=today);});

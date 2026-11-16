@@ -1,0 +1,4 @@
+<?php require 'partials.php'; site_header('Layanan'); ?>
+<section class="page-hero"><div class="container"><h1>Layanan KostService</h1><p>Pilih bantuan yang Anda perlukan untuk kamar kos.</p></div></section><section class="content container"><div class="cards">
+<?php foreach ([['🧹','Kost Cleaning','Layanan membersihkan kamar agar tetap bersih, nyaman, dan sehat.'],['🧺','Kost Laundry','Bantuan mencuci dan merapikan pakaian Anda.'],['🚚','Kost Delivery','Pengantaran kebutuhan sehari-hari sesuai kesepakatan.'],['🔧','Kost Repair','Bantuan perbaikan ringan untuk kebutuhan kamar kos.'],['💙','Kost Care','Perawatan kamar secara berkala.']] as $s): ?><article class="service-card"><div class="service-icon"><?= $s[0] ?></div><h3><?= e($s[1]) ?></h3><p><?= e($s[2]) ?></p><a class="btn" href="pesan.php?layanan=<?= urlencode($s[1]) ?>">Pesan Layanan</a></article><?php endforeach; ?>
+</div></section><?php site_footer(); ?>
